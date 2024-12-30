@@ -9,7 +9,6 @@ body {
     color: #333;
 }
 
-
 /* Header Styling */
 
 header {
@@ -28,7 +27,6 @@ header {
     text-align: center;
 }
 
-
 /* Footer Styling */
 
 footer {
@@ -40,7 +38,6 @@ footer {
     box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
     font-size: 0.9em;
 }
-
 
 /* Container for Layout */
 
@@ -55,7 +52,6 @@ footer {
     padding: 20px;
 }
 
-
 /* Cover Section */
 
 .cover {
@@ -63,7 +59,6 @@ footer {
     padding: 30px;
     text-align: center;
 }
-
 
 /* Head Styling */
 
@@ -80,7 +75,6 @@ footer {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-
 /* Link Styling */
 
 a {
@@ -95,7 +89,6 @@ a:hover {
     color: #fff;
     background-color: #007BFF;
 }
-
 
 /* Social Icons */
 
@@ -113,7 +106,6 @@ a:hover {
     border-radius: 50%;
     padding: 10px;
 }
-
 
 /* Product List */
 
@@ -162,7 +154,6 @@ a:hover {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
-
 /* Headings and Text */
 
 h2 {
@@ -177,60 +168,4 @@ p {
     font-size: 1em;
     line-height: 1.5;
     color: #555;
-}
-
-
-/* Responsive Design */
-
-@media (max-width: 768px) {
-    body {
-        font-size: 14px;
-    }
-    header {
-        font-size: 1.2em;
-        padding: 15px;
-    }
-    .container {
-        width: 95%;
-        padding: 10px;
-    }
-    .head {
-        width: 80%;
-        font-size: 1em;
-    }
-    #product-list .insight,
-    #product-list .item {
-        flex: 1 1 calc(100% - 20px);
-    }
-    h2 {
-        font-size: 1.5em;
-    }
-    p {
-        font-size: 0.9em;
-    }
-    .icons {
-        font-size: 1.2em;
-        margin: 5px;
-    }
-}
-
-@media (max-width: 480px) {
-    header {
-        font-size: 1em;
-        padding: 10px;
-    }
-    .head {
-        width: 90%;
-        font-size: 0.9em;
-    }
-    .icons {
-        font-size: 1em;
-        margin: 3px;
-    }
-    h2 {
-        font-size: 1.2em;
-    }
-    p {
-        font-size: 0.8em;
-    }
 }

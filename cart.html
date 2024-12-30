@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        
+        .container {
+            width: 90%;
+            margin: 20px auto;
+        }
+        
+        .cart-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .cart-item {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .cart-item img {
+            max-width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        
+        .cart-item h3 {
+            font-size: 18px;
+            color: #333;
+        }
+        
+        .cart-item p {
+            font-size: 16px;
+            color: #555;
+        }
+        
+        .cart-item button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        
+        .cart-item button:hover {
+            background-color: #c82333;
+        }
+        
+        .total {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        
+        .button-container {
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background: #333;
+            color: white;
+            margin-top: 20px;
+        }
+        
+        .success-message {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            animation: success 3s;
+            background-color: rgb(248, 126, 126);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 60px;
+            display: none;
+            z-index: 1000;
+        }
+        
+        @keyframes success {
+            from {
+                transform: translateX(-70%);
+            }
+            to {
+                transform: translateY(300px);
+            }
+        }
+        
+        .head {
+            background-color: #fff;
+            color: #007BFF;
+            border-radius: 20px;
+            text-align: center;
+            padding: 10px 20px;
+            font-family: 'Times New Roman', serif;
+            font-size: 1.2em;
+            margin: 10px auto;
+            width: 40%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        /* Link Styling */
+        
+        a {
+            color: #007BFF;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        a:hover {
+            color: #fff;
+            background-color: #007BFF;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="head">
+            <a href="retail.html">Home</a>
+            <a href="shopping.html">Shop</a>
+            <a href="signIn.html">Sign In</a>
+            <a href="About.html">About</a>
+        </div>
+        <h2>Your Shopping Cart</h2>
+    </header>
+
+
+    <!-- Success Message for adding product to cart -->
+    <div id="successMessage" class="success-message">
+        Your Cart is Empty!
+    </div>
+
+
+    <!-- Success Message for adding product to cart -->
+    <div id="removeMessage" class="success-message">
+        Cart removed successfully!
+    </div>
+    <button onclick="shop()" style="background-color: #f1e206; margin-top: 3px; font-size: 14px; color: hsl(0, 66%, 55%);margin-left: 80%; ">Continue Shopping</button>
+
+    <div class="container">
+        <h2>Items in your cart:</h2>
+        <div class="cart-grid" id="cart-items-list"></div>
+
+        <div class="total">
+            Total: $<span id="total-amount">0</span>
+        </div>
+
+        <div class="button-container">
+            <button onclick="proceedToOrder()">Proceed to Order</button>
+        </div>
+    </div>
+
+    <footer>
+        find us on:
+        <div class="social_media">
+            <a class="icons" href="https://www.facebook.com/Brian Mwenda" target="_blank" rel="noopener noreferrer">
+                
+            Facebook <!-- Load Font Awesome -->
+            <a class="icons" href="https://www.facebook.com/BrianMwenda?sk=messages" target="_blank" rel="noopener noreferrer">
+       
+            <!-- Facebook Icon -->
+            <i class="fab fa-facebook"></i>
+            
+            </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="icons" href="">
+                X <!-- Load Font Awesome -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+                
+                <!-- X Icon -->
+                <i class="fab fa-twitter"></i>
+                 
+            </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="icons" href="https://wa.me/254717677103?text=Hello%2C%20I%20need%20help%21" target="_blank">
+       
+                WhatsApp <!-- Load Font Awesome -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+                
+                <!-- WhatsApp Icon -->
+                <i class="fab fa-whatsapp"></i>
+                 
+            </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="icons" href="">
+                Instagram <!-- Load Font Awesome -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+                
+                <!-- Instagram Icon -->
+                <i class="fab fa-instagram"></i>
+                
+            </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <P style="color: #555;">Call Us : 0111300770/0787946448</P>
+        <p style="color: #555;">&copy; 2024 Retail Shop. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Retrieve cart data from localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let totalAmount = 0;
+
+        // Function to display cart items
+        function displayCart() {
+            const cartItemsList = document.getElementById('cart-items-list');
+            cartItemsList.innerHTML = '';
+
+            cart.forEach((item, index) => {
+                const div = document.createElement('div');
+                div.classList.add('cart-item');
+
+                // Add product image, name, price, and remove button
+                div.innerHTML = `
+                    <img src="https://via.placeholder.com/250x200" alt="${item.product}">
+                    <h3>${item.product}</h3>
+                    <p>Price: $${item.price}</p>
+                    <button onclick="removeFromCart(${index})">Remove</button>
+                `;
+                cartItemsList.appendChild(div);
+
+                totalAmount += item.price;
+            });
+
+            document.getElementById('total-amount').textContent = totalAmount.toFixed(2);
+        }
+
+        // Function to remove item from cart
+        function removeFromCart(index) {
+            // Remove the item from the cart array
+            cart.splice(index, 1);
+
+            // Update the localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            showRemoveMessage();
+            // Update the cart display
+            displayCart();
+        }
+
+        // Function to proceed to order
+        function proceedToOrder() {
+            if (cart.length === 0) {
+                showSuccessMessage();
+                /* alert('Your cart is empty!');*/
+            } else {
+                alert('Proceeding to checkout...');
+                // Here you can add functionality to complete the order
+                // For now, we'll just clear the cart and redirect back to the main page
+                localStorage.removeItem('cart');
+                window.location.href = "shopping.html"; // Redirect to the shop page
+            }
+        }
+
+        function shop() {
+            if (cart.length === 0) {
+                window.location.href = "shopping.html";
+            } else {
+                alert('Checkout before adding more to the cart, your cart may be erased!');
+                window.location.href = "shopping.html"; // Redirect to the shop page
+            }
+        }
+        // Function to show success message
+        function showSuccessMessage() {
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block'; // Show the message
+
+            // Hide the success message after 3 seconds
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000);
+        }
+
+        function showRemoveMessage() {
+            const successMessage = document.getElementById('removeMessage');
+            successMessage.style.display = 'block'; // Show the message
+
+            // Hide the success message after 3 seconds
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000);
+        }
+
+
+        // Display the cart items on page load
+        displayCart();
+    </script>
+
+</body>
+
+</html>

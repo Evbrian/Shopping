@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+
+    <link rel="stylesheet" href="retail.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+        
+        .container {
+            width: 40%;
+            padding-top: 10px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        
+        .content {
+            background-color: #fFF;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            color: black;
+            padding: 20px;
+            flex: 1 1 calc(30% - 20px);
+            text-align: center;
+        }
+        
+        .btn {
+            border-radius: 5px;
+            width: 150px;
+            height: 30px;
+            background-color: rgb(89, 89, 202);
+            color: #fff;
+        }
+        
+        .btn:hover {
+            background-color: rgb(31, 31, 248);
+            color: gray;
+        }
+        
+        .input {
+            width: 80%;
+            height: 30px;
+            border-radius: 5px;
+        }
+        
+        #pickup {
+            width: 100px;
+            height: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="head">
+            <a href="retail.html">Home</a>
+            <a href="shopping.html">Shop</a>
+            <a href="signIn.html">Sign In</a>
+            <a href="About.html">About</a>
+        </div>
+        <h1>Welcome to inuaJamii Retail Business</h1>
+        <p>Your one-stop shop for amazing products</p>
+        <p>Quality and Affordable</p>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <p>First Name:</p>
+            <input class="input" type="text" name="fname" id="fname" placeholder="First Name" required><br><br>
+            <p>Second Name:</p>
+            <input class="input" type="text" name="sname" id="sname" placeholder="Second Name" required><br><br>
+            <p>Email:</p>
+            <input class="input" type="email" name="email" id="email" placeholder=" @gmail.com" required><br><br>
+            <p>Phone Number:</p>
+            <input class="input" type="number" name="number" id="number" placeholder="+254.........." required><br><br>
+            <p>Pick-Up Station:</p>
+            <select name="pickup" id="pickup">
+                <option value="Kyeni">Kyeni</option>
+                <option value="Kathageri">Kathageri</option>
+                <option value="Karurumo">Karurumo</option>
+                <option value="Runyenjes">Runyenjes</option>
+                <option value="Kathanjuri">Kathanjuri</option>
+            </select><br><br>
+
+            <p>Payment Method:</p>
+            <input type="radio" name="method" value="Cash"> Cash
+            <input type="radio" name="method" value="M-Pesa"> M-Pesa<br><br>
+
+            <p>Payment Time:</p>
+            <input type="radio" name="time" value="On Delivery"> On Delivery
+            <input type="radio" name="time" value="Immediately After Order"> Immediately After Order<br><br>
+
+            <input class="btn" type="button" name="btn" value="Create Account" onclick="createAccount()">
+        </div>
+    </div>
+    <footer>
+        find us on:
+        <div class="social_media">
+            <a class="icons" href="https://www.facebook.com/BrianMwenda?sk=messages" target="_blank" rel="noopener noreferrer">
+       
+            Facebook <!-- Load Font Awesome -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+            
+            <!-- Facebook Icon -->
+            <i class="fab fa-facebook"></i>
+            
+            </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="icons" href="">
+                X <!-- Load Font Awesome -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+            
+                <!-- X Icon -->
+                <i class="fab fa-twitter"></i>
+                 
+            </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="icons" href="https://wa.me/254717677103?text=Hello%2C%20I%20need%20help%21" target="_blank">
+       
+                WhatsApp <!-- Load Font Awesome -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+                
+                <!-- WhatsApp Icon -->
+                <i class="fab fa-whatsapp"></i>
+                 
+            </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="icons" href="">
+                Instagram <!-- Load Font Awesome -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+                
+                <!-- Instagram Icon -->
+                <i class="fab fa-instagram"></i>
+                
+            </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <P>Call Us : 0717677103/0105919295</P>
+        <p>&copy; 2024 Retail Shop. All rights reserved.</p>
+    </footer>
+
+
+    <script>
+        // Create account function
+        function createAccount() {
+            var fname = document.getElementById('fname').value;
+            var sname = document.getElementById('sname').value;
+            var email = document.getElementById('email').value;
+            var number = document.getElementById('number').value;
+            var pickup = document.getElementById('pickup').value;
+            var method = document.querySelector('input[name="method"]:checked');
+            var time = document.querySelector('input[name="time"]:checked');
+
+            if (!method || !time) {
+                alert('Please select payment method and payment time');
+                return;
+            }
+
+            method = method.value;
+            time = time.value;
+
+            // Send data to PHP script using Fetch API
+            fetch('create_account.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        fname: fname,
+                        sname: sname,
+                        email: email,
+                        number: number,
+                        pickup: pickup,
+                        method: method,
+                        time: time
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Account created successfully!');
+                        window.location.href = 'signin.html'; // Redirect to login page if needed
+                    } else {
+                        alert('Error: ' + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Something went wrong. Please try again later.');
+                });
+        }
+    </script>
+</body>
+
+</html>

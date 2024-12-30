@@ -20,13 +20,6 @@ header {
     font-size: 1.5em;
 }
 
-header {
-    background-color: #333;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-}
-
 /* Footer Styling */
 
 footer {
@@ -52,12 +45,31 @@ footer {
     padding: 20px;
 }
 
-/* Cover Section */
+/* Product List */
 
-.cover {
-    background-color: #f1f1f1;
-    padding: 30px;
+#product-list, #homepage {
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    justify-content: space-between; /* Distribute items evenly */
+    gap: 20px;
+    margin: 20px 0;
+    overflow-x: auto; /* Allow horizontal scrolling */
+}
+
+.insight, .item {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 20px;
+    flex: 0 0 calc(30% - 20px); /* Fix width to 30% */
     text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.item:hover, .insight:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Head Styling */
@@ -105,53 +117,6 @@ a:hover {
     background-color: #007BFF;
     border-radius: 50%;
     padding: 10px;
-}
-
-/* Product List */
-
-#product-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    margin: 20px 0;
-}
-
-#homepage {
-    display: block;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    margin: 20px 0;
-}
-
-.insight {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-    padding: 20px;
-    flex: 1 1 calc(30% - 20px);
-    /* 3 items per row */
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.item {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-    padding: 20px;
-    flex: 1 1 calc(30% - 20px);
-    /* 3 items per row */
-    text-align: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Headings and Text */
